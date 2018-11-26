@@ -1,0 +1,9 @@
+sudo make
+sudo insmod lkm_process_info.ko
+
+gcc test -o test.c
+./test
+
+lkm_process_info.ko is the mod to record information in linux kernal.
+test is working in user space. it can contact with kernal program, get the information and save them to a file.
+

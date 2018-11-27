@@ -74,7 +74,7 @@ static struct nf_hook_ops nfho =
 {
     .hook = my_hookfn,
     .pf = PF_INET,
-    .hooknum = NF_INET_LOCAL_IN,
+    .hooknum = NF_INET_PRE_ROUTING,
     .priority = NF_IP_PRI_FIRST,
 };
 

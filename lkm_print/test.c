@@ -6,7 +6,7 @@
 
 #define NETLINK_USER 31
 
-#define MAX_PAYLOAD 1024 /* maximum payload size*/
+#define MAX_PAYLOAD 1024 
 struct sockaddr_nl src_addr, dest_addr;
 struct nlmsghdr *nlh = NULL;
 struct iovec iov;
@@ -21,15 +21,15 @@ return -1;
 
 memset(&src_addr, 0, sizeof(src_addr));
 src_addr.nl_family = AF_NETLINK;
-src_addr.nl_pid = getpid(); /* self pid */
+src_addr.nl_pid = getpid(); 
 
 bind(sock_fd, (struct sockaddr*)&src_addr, sizeof(src_addr));
 
 memset(&dest_addr, 0, sizeof(dest_addr));
 memset(&dest_addr, 0, sizeof(dest_addr));
 dest_addr.nl_family = AF_NETLINK;
-dest_addr.nl_pid = 0; /* For Linux Kernel */
-dest_addr.nl_groups = 0; /* unicast */
+dest_addr.nl_pid = 0; 
+dest_addr.nl_groups = 0; 
 
 nlh = (struct nlmsghdr *)malloc(NLMSG_SPACE(MAX_PAYLOAD));
 memset(nlh, 0, NLMSG_SPACE(MAX_PAYLOAD));
@@ -62,17 +62,6 @@ if (f == NULL)
     exit(1);
 }
 
-/* print some text */
-const char *text = "";
-fprintf(f, "Some text: %s\n 111111111", text);
-
-/* print integers and floats */
-//int i = 1;
-//float py = 3.1415927;
-//fprintf(f, "Integer: %d, float: %f\n", i, py);
-
-/* printing single chatacters */
-//char c = 'A';
 fprintf(f,(char *)NLMSG_DATA(nlh));
 
 fclose(f);

@@ -1,9 +1,13 @@
+This mod is use netfiler technique to catch the package used between virtual machines contact. To compile and install mod you need to excute the following sentance.
+
+
 sudo make
 sudo insmod lkm_process_info.ko
 
-gcc test -o test.c
+Then compile and run the user space program to get the information from the mod which is running in the kernal space.
+
+gcc test.c -o test
 ./test
 
-lkm_process_info.ko is the mod to record information in linux kernal.
-test is working in user space. it can contact with kernal program, get the information and save them to a file.
+All the information collected by the mod are sent to this user program and stored in the "file.txt".
 

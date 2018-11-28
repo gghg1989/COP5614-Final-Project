@@ -1,11 +1,9 @@
-Package count 
-IP: From: 192.168.1.1 To: 192.168.1.8 package number284 
-From: 192.168.1.3 To: 224.0.0.22 package number1 
-From: 192.168.1.2 To: 224.0.0.22 package number1 
-From: 192.168.1.3 To: 224.0.0.252 package number34 
-From: 192.168.1.3 To: 192.168.1.255 package number51 
-From: 192.168.1.4 To: 224.0.0.22 package number1 
-From: 131.94.132.41 To: 239.255.255.250 package number3 
-From: 131.94.128.200 To: 239.255.255.250 package number3 
-From: 131.94.132.222 To: 239.255.255.250 package number3 
-From: 131.94.145.20 To: 239.255.255.250 package number6 
+{"0": {"from": "34.215.13.51" ,"to": "10.0.2.15" ,"pakets": 9 },
+"1": {"from": "192.30.253.112" ,"to": "10.0.2.15" ,"pakets": 3 },
+"2": {"from": "172.217.8.110" ,"to": "10.0.2.15" ,"pakets": 2 },
+"3": {"from": "151.101.4.133" ,"to": "10.0.2.15" ,"pakets": 12 },
+"4": {"from": "34.230.182.100" ,"to": "10.0.2.15" ,"pakets": 6 },
+"5": {"from": "192.30.253.116" ,"to": "10.0.2.15" ,"pakets": 6 },
+"6": {"from": "72.21.91.29" ,"to": "10.0.2.15" ,"pakets": 2 },
+"7": {"from": "172.217.2.78" ,"to": "10.0.2.15" ,"pakets": 2 },
+}

@@ -18,6 +18,7 @@
 #include <asm/uaccess.h>
 #define NETLINK_USER 31
 
+#define pc_num 50
 typedef struct package_count
 {
     int saddr;
@@ -25,7 +26,7 @@ typedef struct package_count
     int count;
 }package_count;
 
-static package_count pc[11];
+static package_count pc[pc_num];
 static int length_pc;
 static char msg[1024];
 
@@ -39,8 +40,7 @@ unsigned int my_hookfn(void * priv, struct sk_buff *skb, const struct nf_hook_st
 	match = false;	
 	for(i=0; i<length_pc; i++)
 	{
-		if((pc[i].saddr == iph->saddr&&pc[i].daddr == iph->daddr)||
-		   (pc[i].daddr == iph->saddr&&pc[i].saddr == iph->daddr))
+		if(pc[i].saddr == iph->saddr&&pc[i].daddr == iph->daddr)
 		{
 			pc[i].count = pc[i].count+1;
 			match = true;
@@ -51,9 +51,9 @@ unsigned int my_hookfn(void * priv, struct sk_buff *skb, const struct nf_hook_st
 	}
 	if(!match)
 	{
-		if(!(length_pc<10)){
+		if(!(length_pc<pc_num)){
 			printk(KERN_INFO"overfill %d \n", iph->saddr);
-			length_pc = 10;
+			length_pc = pc_num-1;
 		}
 		else{
 			pc[length_pc].saddr = iph->saddr;
@@ -80,22 +80,24 @@ static struct nf_hook_ops nfho =
 struct sock *nl_sk = NULL;
 
 static void con_msg(void){
-	//msg = "package count: xxxxxxx\n";
 	int i;
-	snprintf(msg,sizeof(msg),"Package count \n");
-	strcat(msg,"IP: ");
+	snprintf(msg,sizeof(msg),"");
+	strcat(msg,"{");
 	for(i=0;i<length_pc;i++){
-		strcat(msg,"From: ");
 		char str[32];
-		snprintf(str,sizeof(str),"%pI4 ",&pc[i].saddr);
+		snprintf(str,sizeof(str),"\"%d\": {",i);
 		strcat(msg,str);
-		strcat(msg,"To: ");
-		snprintf(str,sizeof(str),"%pI4 ",&pc[i].daddr);
+		strcat(msg,"\"from\": ");
+		snprintf(str,sizeof(str),"\"%pI4\" ,",&pc[i].saddr);
 		strcat(msg,str);
-		snprintf(str,sizeof(str),"package number%d \n",pc[i].count);
+		strcat(msg,"\"to\": ");
+		snprintf(str,sizeof(str),"\"%pI4\" ,",&pc[i].daddr);
 		strcat(msg,str);
+		snprintf(str,sizeof(str),"\"pakets\": %d ",pc[i].count);
+		strcat(msg,str);
+		strcat(msg,"},\n");
 	}
-	
+	strcat(msg,"}");	
 }
 
 static void hello_nl_recv_msg(struct sk_buff *skb) {
@@ -147,7 +149,7 @@ static int __init hello_init(void) {
 	{
 		return -1;
 	}
-	for(i=0;i<11;i++){
+	for(i=0;i<pc_num;i++){
 		pc[i].count = 0;
 	}
 	length_pc = 0;

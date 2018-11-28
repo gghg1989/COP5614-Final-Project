@@ -1,57 +1,21 @@
-
-
-var data = {
-	"1": {
-		"from": "192.168.12.21",
-		"to": "192.168.12.22",
-		"pakets": 20
-	},
-	"2": {
-		"from": "192.168.12.23",
-		"to": "192.168.12.22",
-		"pakets": 50
-	},
-	"3": {
-		"from": "192.168.13.21",
-		"to": "192.168.13.22",
-		"pakets": 25
-	},
-	"4": {
-		"from": "192.168.13.23",
-		"to": "192.168.13.22",
-		"pakets": 62
-	},
-	"5": {
-		"from": "192.168.13.22",
-		"to": "192.168.13.23",
-		"pakets": 77
-	},
-	"6": {
-		"from": "192.168.13.22",
-		"to": "192.168.13.21",
-		"pakets": 114
-	},
-	"7": {
-		"from": "192.168.13.24",
-		"to": "192.168.13.22",
-		"pakets": 777
-	}
-};
-
-
+// Load assets
 var img = new Image();
 img.onload = function () {
 	init();
 }
-img.src = "assets/com.png";
+img.src = "static/com.png";
 
+// Program entry
 function init() {
-	setInterval(function() {
+	var timer = setInterval(function() {
 		$.getJSON( "static/data.json", function(data) {
 		  // console.log(d);
 			render(data);
+		}).fail(function() {
+			console.log( "Cannot load JSON file." );
+			clearInterval(timer);
 		});
-	}, 1000/60);
+	}, 1000);
 }
 
 

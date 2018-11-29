@@ -1,8 +1,7 @@
-obj-m := connection_tracking.o
+obj-m := lkm_process_info.o
 
 all:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) modules
 
 clean:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-G
+	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) clean

@@ -95,7 +95,12 @@ static void con_msg(void){
 		strcat(msg,str);
 		snprintf(str,sizeof(str),"\"pakets\": %d ",pc[i].count);
 		strcat(msg,str);
-		strcat(msg,"},\n");
+		if(i == length_pc -1){
+			strcat(msg,"}\n");
+		}
+		else{
+			strcat(msg,"},\n");
+		}
 	}
 	strcat(msg,"}");	
 }

@@ -54,7 +54,7 @@ int main() {
 	printf("Received message payload: %s\n", (char *)NLMSG_DATA(nlh));
 	close(sock_fd);
 
-	FILE *f = fopen("../../visualization/static/data.json", "w");
+	FILE *f = fopen("../visualization/static/data.json", "w");
 	if (f == NULL)
 	{
 	    printf("Error opening file!\n");

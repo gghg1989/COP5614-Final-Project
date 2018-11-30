@@ -72,6 +72,9 @@ make
 ./lkm_print
 ```
 4. Use Golang to automatically invoke the print program
+```bash
+go run auto_run.go
+```
 
 ## III. Network Topology Visualization
 

@@ -2,16 +2,15 @@
 
 ## Structure
 * lkm/				Network status scanner loadable kernel module
-** lkm/lkm_process_info.c 	lkm program to scan network status
-** lkm/Makefile				makefile for lkm
+	* lkm/lkm_process_info.c 	lkm program to scan network status
+	* lkm/Makefile				makefile for lkm
 * print/			The program to save network status to file
-** print/bin/			Folder for print program excution files
-** print/lkm_print.c 	Print program source code
-** print/Makefile		makefile for print program
-** print/start_print.sh batch for autorun
-* bin/main program entry point
+	* print/bin/			Folder for print program excution files
+	* print/lkm_print.c 	Print program source code
+	* print/Makefile		makefile for print program
+	* print/start_print.sh batch for autorun
 * visualization/	Network topology visualization program
-** visualization/static		Static files folder for nodejs site
+	* visualization/static		Static files folder for nodejs site
 * README.md	Introduction for project
 
 ## Network status scanner loadable kernel module

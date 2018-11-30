@@ -48,30 +48,30 @@ If you have already have a testing enviroment, you can simply skip this step and
 This Loadable Kernel Module program is basing on netfiler framework, for which monitoring the communications between docker containers. 
 
 ### Usage
-* 
-	1. Get into print directory
-	```bash
-	cd print/
-	```
-	2. To compile and insert lkm to kernel
-	```bash
-	sudo make
-	sudo insmod lkm_process_info.ko
-	```
-* Then compile and run the user space program to get the information from the mod which is running in the kernal space.
-	1. Get into print folder
-	```bash
-	cd print/
-	```
-	2. Compile the print program by Makefile, a lkm_print executable file will be generated
-	```bash
-	make
-	```
-	3. Run the print program, and all the information collected by the lkm will be fetched by this user level program, and then store them in the "data.json" file under visualization/static/ directory.
-	```bash
-	./lkm_print
-	```
-	4. Use Golang to automatically invoking the print program
+#### Compile and insert Loadable Kernel Module
+1. Get into print directory
+```bash
+cd print/
+```
+2. To compile and insert lkm to kernel
+```bash
+sudo make
+sudo insmod lkm_process_info.ko
+```
+#### Compile and run the user space program to get the information from the lkm which is running in the kernal space.
+1. Get into print folder
+```bash
+cd print/
+```
+2. Compile the print program by Makefile, a lkm_print executable file will be generated
+```bash
+make
+```
+3. Run the print program, and all the information collected by the lkm will be fetched by this user level program, and then store them in the "data.json" file under visualization/static/ directory.
+```bash
+./lkm_print
+```
+4. Use Golang to automatically invoke the print program
 
 ## III. Network Topology Visualization
 

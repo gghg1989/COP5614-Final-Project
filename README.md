@@ -26,6 +26,22 @@ The final project for COP 5614 Operating Systems - Fall 2018.
 * README.md	Introduction for project
 
 ## Docker Environment Setup
+1. Setup docker
+To install docker on Ubuntu, please check out this official instructions: https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements
+
+2. Setup docker compose
+We are using docker compose to setup Docker enviroment. The configuration of the testing Enviroment has been saved in the YAML file - docker-compose.yml. To setup the system, you may need to install the docker-compose. Please check out this official instructions: https://docs.docker.com/compose/install/#install-compose
+
+3. Build and up the docker containers
+	```bash
+	docker-compose up -d --build
+	```
+4. To list all running containers
+   	```bash
+	sudo docker ps
+	```
+
+If you have already have a testing enviroment, you can simply skip this step and test the rest parts of the project.
 
 ## Network Status Monitoring Loadable Kernel Module
 
@@ -33,10 +49,10 @@ This Loadable Kernel Module program is basing on netfiler framework, for which m
 
 ### Usage
 * To compile and install mod you need to excute the following sentance.
-```bash
-sudo make
-sudo insmod lkm_process_info.ko
-```
+	```bash
+	sudo make
+	sudo insmod lkm_process_info.ko
+	```
 * Then compile and run the user space program to get the information from the mod which is running in the kernal space.
 	* Get into print folder
 	```bash

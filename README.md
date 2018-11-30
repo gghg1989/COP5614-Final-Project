@@ -25,7 +25,7 @@ The final project for COP 5614 Operating Systems - Fall 2018.
 	* visualization/server.js 		Nodejs project serving code
 * README.md	Introduction for project
 
-## Docker Environment Setup
+## I. Docker Environment Setup
 1. Setup docker
 To install docker on Ubuntu, please check out this official instructions: https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements
 
@@ -43,33 +43,62 @@ We are using docker compose to setup Docker enviroment. The configuration of the
 
 If you have already have a testing enviroment, you can simply skip this step and test the rest parts of the project.
 
-## Network Status Monitoring Loadable Kernel Module
+## II. Network Status Monitoring Loadable Kernel Module
 
 This Loadable Kernel Module program is basing on netfiler framework, for which monitoring the communications between docker containers. 
 
 ### Usage
-* To compile and install mod you need to excute the following sentance.
+* 
+	1. Get into print directory
+	```bash
+	cd print/
+	```
+	2. To compile and insert lkm to kernel
 	```bash
 	sudo make
 	sudo insmod lkm_process_info.ko
 	```
 * Then compile and run the user space program to get the information from the mod which is running in the kernal space.
-	* Get into print folder
+	1. Get into print folder
 	```bash
 	cd print/
 	```
-	* Compile the print program by Makefile
+	2. Compile the print program by Makefile, a lkm_print executable file will be generated
 	```bash
 	make
 	```
+	3. Run the print program, and all the information collected by the lkm will be fetched by this user level program, and then store them in the "data.json" file under visualization/static/ directory.
+	```bash
+	./lkm_print
+	```
+	4. Use Golang to automatically invoking the print program
 
-All the information collected by the mod are sent to this user program and stored in the "file.txt".
+## III. Network Topology Visualization
 
-## Network Topology Visualization
+The network topology visualization is served on Nodejs, which automatically fetch network information generated from Part I and Part II, and output the result on a web page through 5000 port. 
 
+1. Install NodeJS
+First you need to install node on your machine, please check out this instructions: https://www.rosehosting.com/blog/install-npm-on-ubuntu-16-04/
 
+2. Get into visualization directory
+	```bash
+	cd visualization/
+	```
+	
+3. Install dependencies
+	```bash
+	npm install
+	```
 
-## Docker Engine Integration
+4. Serve the NodeJS site
+	```bash
+	node server.js
+	```
+
+5. Check out the result
+Open any morden web browser, which support Canvas feature, and type in localhost:5000 at address bar. Press enter, and the network topology visualization will be renderring on the page.
+
+## IV. Docker Engine Integration
 The docker development group provide a standard development environment for all users to make it easier to contribute to Docker. The standard development environment defines all build dependencies: system libraries and binaries, go environment, go dependencies, etc. After we install docker in our system, we need to do the following steps to compile the Docker source code.
 
 1. Build the environment
@@ -91,13 +120,9 @@ To execute the test cases, run this command:
 	```
 
 There are many Docker Engine Plugins available in Docker Engine which extend Docker’s functionality. They typically come in three specific types—network plugins, volume plugins and authorization plugins.
-
 According to the instruction, the LKM function should be integrated into the docker source code. In this case, we try to install a network plugin in to the docker engine, which makes the containers from different groups to communicate with each other. With the help of the tool that can monitor the network activities, we can examine any packet that originates from or is destined to as well as record the log information into a file.
 
-In practice, we write a golang file called auto_run.go which execute the binary file lkm_print every 3 second. In this way, we can monitor the package transmission and use the real time data for the network topology visualization.
-However, we didn't integerate the code into the Docker source code, so we need to run this file by this command:
 
-	go run auto_run.go
 
 ## Contribution
 * Liqun Yang(6072714)

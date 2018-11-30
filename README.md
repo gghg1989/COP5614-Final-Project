@@ -77,14 +77,17 @@ Run this command in current “docker” directory, and the first build will tak
 	```
 2. Build the Docker binary
 Run this command to build the docker binary, and the binary file will be created in “./bundles/<version>-dev/binary/”.
+	
 	```bash
 	$ make binary
 	```
 Run the Tests
 To execute the test cases, run this command:
+	
 	```bash
 	$ make test
 	```
+
 There are many Docker Engine Plugins available in Docker Engine which extend Docker’s functionality. They typically come in three specific types—network plugins, volume plugins and authorization plugins.
 According to the instruction, the LKM function should be integrated into the docker source code. In this case, we try to install a network plugin in to the docker engine, which makes the containers from different groups to communicate with each other. With the help of the tool that can monitor the network activities, we can examine any packet that originates from or is destined to as well as record the log information into a file.
 

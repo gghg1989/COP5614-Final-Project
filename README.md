@@ -2,18 +2,17 @@
 
 ## Structure
 * lkm/				Network status scanner loadable kernel module
-** 
+** lkm/lkm_process_info.c 	lkm program to scan network status
+** lkm/Makefile				makefile for lkm
 * print/			The program to save network status to file
-** 
-* src/main.c office-hour-program source code
-* src/util.h head file for utilities
-* src/util.c utilities source code
-* bin/	excution file for office-hour-program
+** print/bin/			Folder for print program excution files
+** print/lkm_print.c 	Print program source code
+** print/Makefile		makefile for print program
+** print/start_print.sh batch for autorun
 * bin/main program entry point
 * visualization/	Network topology visualization program
-** 
-* Makefile	makefile for office-hour-program
-* README.md	introduction for project
+** visualization/static		Static files folder for nodejs site
+* README.md	Introduction for project
 
 ## Network status scanner loadable kernel module
 

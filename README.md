@@ -122,6 +122,10 @@ To execute the test cases, run this command:
 There are many Docker Engine Plugins available in Docker Engine which extend Docker’s functionality. They typically come in three specific types—network plugins, volume plugins and authorization plugins.
 According to the instruction, the LKM function should be integrated into the docker source code. In this case, we try to install a network plugin in to the docker engine, which makes the containers from different groups to communicate with each other. With the help of the tool that can monitor the network activities, we can examine any packet that originates from or is destined to as well as record the log information into a file.
 
+In practice, we write a golang file called auto_run.go which execute the binary file lkm_print every 3 second. In this way, we can monitor the package transmission and use the real time data for the network topology visualization. However, we didn't integerate the code into the Docker source code, so we need to run this file by this command:
+	
+	go run auto_run.go
+
 
 
 ## Contribution

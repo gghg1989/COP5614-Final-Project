@@ -68,6 +68,27 @@ All the information collected by the mod are sent to this user program and store
 ## Network Topology Visualization
 
 ## Docker Engine Integration
+The docker development group provide a standard development environment for all users to make it easier to contribute to Docker. The standard development environment defines all build dependencies: system libraries and binaries, go environment, go dependencies, etc. After we install docker in our system, we need to do the following steps to compile the Docker source code.
+
+1. Build the environment
+Run this command in current “docker” directory, and the first build will take some time to complete.
+	```bash
+	$ make build
+	```
+2. Build the Docker binary
+Run this command to build the docker binary, and the binary file will be created in “./bundles/<version>-dev/binary/”.
+	```bash
+	$ make binary
+	```
+Run the Tests
+To execute the test cases, run this command:
+	```bash
+	$ make test
+	```
+There are many Docker Engine Plugins available in Docker Engine which extend Docker’s functionality. They typically come in three specific types—network plugins, volume plugins and authorization plugins.
+According to the instruction, the LKM function should be integrated into the docker source code. In this case, we try to install a network plugin in to the docker engine, which makes the containers from different groups to communicate with each other. With the help of the tool that can monitor the network activities, we can examine any packet that originates from or is destined to as well as record the log information into a file.
+
+
 
 ## Contribution
 * Liqun Yang(6072714)

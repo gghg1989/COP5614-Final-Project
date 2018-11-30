@@ -133,10 +133,13 @@ go run auto_run.go
 ## Contribution
 * Liqun Yang(6072714)
 	* Part 2: Network Monitoring Tool Design with LKM and C
+	* Part 3: Parse network information into JSON format
 * Yuzhou Feng(4884556)
 	* Part 1: Docker Environment Setup
 	* Part 3: Network Topology Visualization with Nodejs and Javascript
 	* Documentation
 	* Video
 * Tianren Yang(5966794)
+	* Part 2: Automatically load print program
 	* Part 4: Docker Engine Integration
+	* Documentation

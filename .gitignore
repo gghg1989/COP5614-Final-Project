@@ -12,5 +12,3 @@ Module.markers
 tests.out
 
 **/lkm_print
-**/bin/*
-!**/.keep

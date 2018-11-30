@@ -12,3 +12,4 @@ Module.markers
 tests.out
 
 **/lkm_print
+**/data.json

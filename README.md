@@ -81,7 +81,7 @@ Run this command to build the docker binary, and the binary file will be created
 	```bash
 	$ make binary
 	```
-Run the Tests
+3. Run the Tests
 To execute the test cases, run this command:
 	
 	```bash

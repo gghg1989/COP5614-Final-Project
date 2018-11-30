@@ -96,6 +96,7 @@ According to the instruction, the LKM function should be integrated into the doc
 
 In practice, we write a golang file called auto_run.go which execute the binary file lkm_print every 3 second. In this way, we can monitor the package transmission and use the real time data for the network topology visualization.
 However, we didn't integerate the code into the Docker source code, so we need to run this file by this command:
+
 	```bash
 	go run auto_run.go
 	```

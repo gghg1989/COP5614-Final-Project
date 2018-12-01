@@ -1,10 +1,10 @@
 # COP5614-Final-Project
 
 The final project for COP 5614 Operating Systems - Fall 2018.
-* Team #12:
-	* Liqun Yang 		PID: 6072714
-	* Yuzhou Feng		PID: 4884556
-	* Tianren Yang		PID: 5966794
+Team #12:
+* Liqun Yang 		PID: 6072714	email: lyang028@fiu.edu 
+* Yuzhou Feng		PID: 4884556	email: yfeng015@fiu.edu
+* Tianren Yang		PID: 5966794	email: tyang009@fiu.edu 
 
 ## Structure
 * lkm/				Network status monitoring loadable kernel module
